@@ -1,13 +1,16 @@
 package guru.springframework.shayan.sfgpetclinic.service.map;
 
+import java.util.Set;
+
+import org.springframework.stereotype.Component;
+
 import guru.springframework.shayan.sfgpetclinic.model.Pet;
 import guru.springframework.shayan.sfgpetclinic.service.PetService;
-
-import java.util.Set;
 
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
+@Component
 public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {

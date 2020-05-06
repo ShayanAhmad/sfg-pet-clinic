@@ -7,8 +7,6 @@ import guru.springframework.shayan.sfgpetclinic.model.Owner;
 import guru.springframework.shayan.sfgpetclinic.model.Vet;
 import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 import guru.springframework.shayan.sfgpetclinic.service.VetService;
-import guru.springframework.shayan.sfgpetclinic.service.map.OwnerServiceMap;
-import guru.springframework.shayan.sfgpetclinic.service.map.VetServiceMap;
 
 /**
  * To load data into our models.
@@ -19,9 +17,9 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetServiceMap;
     private final OwnerService ownerServiceMap;
 
-    public DataLoader() {
-        vetServiceMap = new VetServiceMap();
-        ownerServiceMap = new OwnerServiceMap();
+    public DataLoader(VetService vetServiceMap, OwnerService ownerServiceMap) {
+        this.vetServiceMap = vetServiceMap;
+        this.ownerServiceMap = ownerServiceMap;
     }
 
     @Override

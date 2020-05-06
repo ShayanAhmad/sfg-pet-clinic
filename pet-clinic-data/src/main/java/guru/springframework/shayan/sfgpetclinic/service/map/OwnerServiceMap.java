@@ -5,9 +5,12 @@ import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Component;
+
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
+@Component
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
