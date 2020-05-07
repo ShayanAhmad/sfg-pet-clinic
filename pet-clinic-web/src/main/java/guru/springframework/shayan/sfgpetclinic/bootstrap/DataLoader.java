@@ -24,6 +24,10 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        loadDefaultData();
+    }
+
+    private void loadDefaultData() {
         createAndSaveDummyOwner("Andrew", "Bee");
         createAndSaveDummyOwner("Bruce", "Lee");
         System.out.println("Owners loaded!");
