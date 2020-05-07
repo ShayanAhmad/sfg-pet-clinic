@@ -14,41 +14,39 @@ import guru.springframework.shayan.sfgpetclinic.service.VetService;
 @Component
 public class DataLoader implements CommandLineRunner {
 
-    private final VetService vetServiceMap;
-    private final OwnerService ownerServiceMap;
+    private final VetService vetService;
+    private final OwnerService ownerService;
 
-    public DataLoader(VetService vetServiceMap, OwnerService ownerServiceMap) {
-        this.vetServiceMap = vetServiceMap;
-        this.ownerServiceMap = ownerServiceMap;
+    public DataLoader(VetService vetService, OwnerService ownerService) {
+        this.vetService = vetService;
+        this.ownerService = ownerService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        createAndSaveDummyOwner(1L, "Andrew", "Bee");
-        createAndSaveDummyOwner(2L, "Bruce", "Lee");
+        createAndSaveDummyOwner("Andrew", "Bee");
+        createAndSaveDummyOwner("Bruce", "Lee");
         System.out.println("Owners loaded!");
 
-        createAndSaveDummyVet(3L, "Dr. Aby", "Neil");
-        createAndSaveDummyVet(4L, "Dr. Koki", "Na-Basu");
+        createAndSaveDummyVet("Dr. Aby", "Neil");
+        createAndSaveDummyVet("Dr. Koki", "Na-Basu");
         System.out.println("Vets loaded!");
     }
 
-    private void createAndSaveDummyOwner(Long id, String fName, String lName) {
+    private void createAndSaveDummyOwner(String fName, String lName) {
         Owner owner = new Owner();
-        owner.setId(id);
         owner.setFirstName(fName);
         owner.setLastName(lName);
 
-        ownerServiceMap.save(owner);
+        ownerService.save(owner);
     }
 
-    private void createAndSaveDummyVet(Long id, String fName, String lName) {
+    private void createAndSaveDummyVet(String fName, String lName) {
         Vet vet = new Vet();
-        vet.setId(id);
         vet.setFirstName(fName);
         vet.setLastName(lName);
 
-        vetServiceMap.save(vet);
+        vetService.save(vet);
     }
 
 }

@@ -1,11 +1,11 @@
 package guru.springframework.shayan.sfgpetclinic.service.map;
 
-import guru.springframework.shayan.sfgpetclinic.model.Owner;
-import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
-
 import java.util.Set;
 
 import org.springframework.stereotype.Component;
+
+import guru.springframework.shayan.sfgpetclinic.model.Owner;
+import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
@@ -25,7 +25,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner owner) {
-        return super.save(owner.getId(), owner);
+        return super.save(owner);
     }
 
     @Override
