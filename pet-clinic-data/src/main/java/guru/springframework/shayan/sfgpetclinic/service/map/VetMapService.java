@@ -11,7 +11,7 @@ import guru.springframework.shayan.sfgpetclinic.service.VetService;
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
 @Component
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
+public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
     @Override
     public Vet findById(Long id) {
         return super.findById(id);

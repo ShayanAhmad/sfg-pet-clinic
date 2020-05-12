@@ -4,33 +4,32 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import guru.springframework.shayan.sfgpetclinic.model.Owner;
-import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
+import guru.springframework.shayan.sfgpetclinic.model.Pet;
+import guru.springframework.shayan.sfgpetclinic.service.PetService;
 
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
 @Component
-public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
-
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
-    public Owner findById(Long id) {
+    public Pet findById(Long id) {
         return super.findById(id);
     }
 
     @Override
-    public Set<Owner> findAll() {
+    public Set<Pet> findAll() {
         return super.findAll();
     }
 
     @Override
-    public Owner save(Owner owner) {
-        return super.save(owner);
+    public Pet save(Pet pet) {
+        return super.save(pet);
     }
 
     @Override
-    public void delete(Owner owner) {
-        super.delete(owner);
+    public void delete(Pet pet) {
+        super.delete(pet);
     }
 
     @Override
