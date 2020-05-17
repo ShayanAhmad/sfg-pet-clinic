@@ -2,16 +2,16 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 
 import java.util.Set;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import guru.springframework.shayan.sfgpetclinic.model.Specialty;
-import guru.springframework.shayan.sfgpetclinic.service.SpecialtiesService;
+import guru.springframework.shayan.sfgpetclinic.service.SpecialtyService;
 
 /**
  * Every Vet will have the specialties.
  */
-@Service
-public class SpecialtiesMapService extends AbstractMapService<Specialty, Long> implements SpecialtiesService {
+@Component
+public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
     public Specialty findById(Long id) {
         return super.findById(id);

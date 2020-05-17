@@ -27,10 +27,12 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
     T save(T object) {
         if (!Objects.isNull(object) && Objects.isNull(object.getId())) {
             object.setId(getNextId());
+            map.put(object.getId(), object);
+
         } else {
             throw new RuntimeException("Object cannot be null");
         }
-        return map.put(object.getId(), object);
+        return object;
     }
 
     void delete(T object) {
