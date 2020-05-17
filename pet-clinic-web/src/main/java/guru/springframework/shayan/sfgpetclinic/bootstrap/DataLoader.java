@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import guru.springframework.shayan.sfgpetclinic.model.Owner;
 import guru.springframework.shayan.sfgpetclinic.model.Pet;
 import guru.springframework.shayan.sfgpetclinic.model.PetType;
+import guru.springframework.shayan.sfgpetclinic.model.Specialty;
 import guru.springframework.shayan.sfgpetclinic.model.Vet;
 import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 import guru.springframework.shayan.sfgpetclinic.service.PetTypeService;
@@ -31,21 +32,25 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadDefaultData();
+        int count = petTypeService.findAll().size();
+        if (count == 0) loadDefaultData();
     }
 
     private void loadDefaultData() {
         PetType pt1 = createAndSaveDummyPetType("Cat");
         PetType pt2 = createAndSaveDummyPetType("Dog");
+        System.out.println("Pets loaded!");
 
         createAndSaveDummyOwner("Andrew", "Bee", "Diatal ut.", "Debrecen", "+132456", "Bobby", pt1);
         createAndSaveDummyOwner("Bruce", "Lee", "Foshan", "Foshan city", "+321456", "Rosco", pt2);
         System.out.println("Owners loaded!");
 
-        System.out.println("Pets loaded!");
+        Specialty radiology = createSpecialty("Radiology");
+        Specialty surgery = createSpecialty("Surgery");
+        Specialty dentist = createSpecialty("Dentist");
 
-        createAndSaveDummyVet("Dr. Aby", "Neil");
-        createAndSaveDummyVet("Dr. Koki", "Na-Basu");
+        createAndSaveDummyVet("Dr. Aby", "Neil", radiology);
+        createAndSaveDummyVet("Dr. Koki", "Na-Basu", surgery);
         System.out.println("Vets loaded!");
     }
 
@@ -53,6 +58,12 @@ public class DataLoader implements CommandLineRunner {
         PetType petType = new PetType();
         petType.setName(petName);
         return petTypeService.save(petType);
+    }
+
+    private Specialty createSpecialty(String description) {
+        Specialty specialty = new Specialty();
+        specialty.setDescription(description);
+        return specialty;
     }
 
     private void createAndSaveDummyOwner(String fName, String lName, String address, String city, String telephone, String petName, PetType petType) {
@@ -74,10 +85,11 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner);
     }
 
-    private void createAndSaveDummyVet(String fName, String lName) {
+    private void createAndSaveDummyVet(String fName, String lName, Specialty specialty) {
         Vet vet = new Vet();
         vet.setFirstName(fName);
         vet.setLastName(lName);
+        vet.getSpecialties().add(specialty);
 
         vetService.save(vet);
     }
