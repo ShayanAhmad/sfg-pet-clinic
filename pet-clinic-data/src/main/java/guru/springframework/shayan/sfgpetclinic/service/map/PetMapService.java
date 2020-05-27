@@ -2,7 +2,7 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 
 import java.util.Set;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import guru.springframework.shayan.sfgpetclinic.model.Pet;
 import guru.springframework.shayan.sfgpetclinic.service.PetService;
@@ -10,7 +10,7 @@ import guru.springframework.shayan.sfgpetclinic.service.PetService;
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
-@Component
+@Service
 public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
     @Override
     public Pet findById(Long id) {

@@ -3,7 +3,7 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 import java.util.Objects;
 import java.util.Set;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import guru.springframework.shayan.sfgpetclinic.model.Specialty;
 import guru.springframework.shayan.sfgpetclinic.model.Vet;
@@ -13,7 +13,7 @@ import guru.springframework.shayan.sfgpetclinic.service.VetService;
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
-@Component
+@Service
 public class VetMapService extends AbstractMapService<Vet, Long> implements VetService {
 
     private final SpecialtyService specialtyService;

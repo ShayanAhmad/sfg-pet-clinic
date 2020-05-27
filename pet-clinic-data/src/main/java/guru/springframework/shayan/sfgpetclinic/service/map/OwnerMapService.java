@@ -3,7 +3,7 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 import java.util.Objects;
 import java.util.Set;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import guru.springframework.shayan.sfgpetclinic.model.Owner;
 import guru.springframework.shayan.sfgpetclinic.model.Pet;
@@ -14,7 +14,7 @@ import guru.springframework.shayan.sfgpetclinic.service.PetTypeService;
 /**
  * Created by Shayan Ahmad (sahmed) on 10-Nov-19.
  */
-@Component
+@Service
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private PetTypeService petTypeService;
