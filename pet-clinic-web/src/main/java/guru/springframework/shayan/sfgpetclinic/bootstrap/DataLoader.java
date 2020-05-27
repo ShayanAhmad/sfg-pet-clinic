@@ -13,6 +13,7 @@ import guru.springframework.shayan.sfgpetclinic.model.Vet;
 import guru.springframework.shayan.sfgpetclinic.model.Visit;
 import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 import guru.springframework.shayan.sfgpetclinic.service.PetTypeService;
+import guru.springframework.shayan.sfgpetclinic.service.SpecialtyService;
 import guru.springframework.shayan.sfgpetclinic.service.VetService;
 import guru.springframework.shayan.sfgpetclinic.service.VisitService;
 
@@ -26,12 +27,14 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final PetTypeService petTypeService;
     private final VisitService visitService;
+    private final SpecialtyService specialtyService;
 
-    public DataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService, VisitService visitService) {
+    public DataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService, VisitService visitService, SpecialtyService specialtyService) {
         this.vetService = vetService;
         this.ownerService = ownerService;
         this.petTypeService = petTypeService;
         this.visitService = visitService;
+        this.specialtyService = specialtyService;
     }
 
     @Override
@@ -67,7 +70,7 @@ public class DataLoader implements CommandLineRunner {
     private Specialty createSpecialty(String description) {
         Specialty specialty = new Specialty();
         specialty.setDescription(description);
-        return specialty;
+        return specialtyService.save(specialty);
     }
 
     private void createAndSaveDummyOwner(String fName, String lName, String address, String city, String telephone, String petName, PetType petType) {

@@ -2,6 +2,7 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.shayan.sfgpetclinic.model.PetType;
@@ -11,6 +12,7 @@ import guru.springframework.shayan.sfgpetclinic.service.PetTypeService;
  * Service Map implementation of PetType.
  */
 @Service
+@Profile({"default", "map"})
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
 
     @Override

@@ -2,6 +2,7 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 
 import java.util.Set;
 
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import guru.springframework.shayan.sfgpetclinic.model.Specialty;
@@ -11,6 +12,7 @@ import guru.springframework.shayan.sfgpetclinic.service.SpecialtyService;
  * Every Vet will have the specialties.
  */
 @Service
+@Profile({"default", "map"})
 public class SpecialtyMapService extends AbstractMapService<Specialty, Long> implements SpecialtyService {
     @Override
     public Specialty findById(Long id) {
