@@ -1,11 +1,15 @@
 package guru.springframework.shayan.sfgpetclinic.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -29,6 +33,9 @@ public class Pet extends BaseEntity {
 
     @Column(name = "first_name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private List<Visit> visits = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -60,5 +67,13 @@ public class Pet extends BaseEntity {
 
     public void setPetType(PetType petType) {
         this.petType = petType;
+    }
+
+    public List<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<Visit> visits) {
+        this.visits = visits;
     }
 }
