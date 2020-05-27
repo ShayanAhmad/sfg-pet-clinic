@@ -5,4 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import guru.springframework.shayan.sfgpetclinic.model.Owner;
 
 public interface OwnerJpaRepository extends CrudRepository<Owner, Long> {
+    Owner findByLastName(String lastName);
 }
