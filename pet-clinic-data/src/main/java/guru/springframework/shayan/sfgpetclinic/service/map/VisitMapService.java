@@ -3,9 +3,12 @@ package guru.springframework.shayan.sfgpetclinic.service.map;
 import java.util.Objects;
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import guru.springframework.shayan.sfgpetclinic.model.Visit;
 import guru.springframework.shayan.sfgpetclinic.service.VisitService;
 
+@Service
 public class VisitMapService extends AbstractMapService<Visit, Long> implements VisitService {
 
     @Override

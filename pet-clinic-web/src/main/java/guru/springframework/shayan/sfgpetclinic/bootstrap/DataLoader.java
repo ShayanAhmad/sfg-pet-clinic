@@ -10,9 +10,11 @@ import guru.springframework.shayan.sfgpetclinic.model.Pet;
 import guru.springframework.shayan.sfgpetclinic.model.PetType;
 import guru.springframework.shayan.sfgpetclinic.model.Specialty;
 import guru.springframework.shayan.sfgpetclinic.model.Vet;
+import guru.springframework.shayan.sfgpetclinic.model.Visit;
 import guru.springframework.shayan.sfgpetclinic.service.OwnerService;
 import guru.springframework.shayan.sfgpetclinic.service.PetTypeService;
 import guru.springframework.shayan.sfgpetclinic.service.VetService;
+import guru.springframework.shayan.sfgpetclinic.service.VisitService;
 
 /**
  * To load data into our models.
@@ -23,11 +25,13 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final OwnerService ownerService;
     private final PetTypeService petTypeService;
+    private final VisitService visitService;
 
-    public DataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService) {
+    public DataLoader(VetService vetService, OwnerService ownerService, PetTypeService petTypeService, VisitService visitService) {
         this.vetService = vetService;
         this.ownerService = ownerService;
         this.petTypeService = petTypeService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -81,6 +85,11 @@ public class DataLoader implements CommandLineRunner {
         pet.setOwner(owner);
 
         owner.getPets().add(pet);
+
+        Visit petVisit = new Visit();
+        petVisit.setDate(LocalDate.now());
+        petVisit.setDescription("Sneezy " + pet.getName());
+        petVisit.setPet(pet);
 
         ownerService.save(owner);
     }
